@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import xplanner_entities.Story;
 import xplanner_page_object.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -34,26 +33,11 @@ public class BasicTest {
     }
 
     @Test
-    public void login(){
+    public void storeStoriesInCSV(){
         mainPage = loginPage.login();
         iterationsListPage = mainPage.clickProject();
         storiesListPage = iterationsListPage.clickIterationIdLink();
         List<Story> stories = storiesListPage.getStories(storyDetailsPage);
- /*       for(Story story : stories){
-            storyDetailsPage = storiesListPage.clickStoryId(story.getStoryId());
-            double estTime;
-            try{
-                estTime = storyDetailsPage.getEstTime(storyDetailsPage.getDescription());
-            } catch (NumberFormatException e){
-                System.out.println("Est appears without a number. Setting 0.0 for a story "+story.getStoryId());
-                estTime = 0.0;
-            }
-
-            if(estTime > 0)
-                story.setEstTime(estTime);
-            System.out.println(story.toString());
-            storiesListPage = storyDetailsPage.returnTostoriesList();
-        } */
         Story.storiesToCsv(stories);
     }
 

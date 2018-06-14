@@ -140,9 +140,9 @@ public class Story {
             sb.append(';');
             sb.append(story.getStatus());
             sb.append(';');
-            sb.append(String.valueOf(story.getEstTime()).replace(".",","));
+            sb.append(String.valueOf(story.getEstTime()));
             sb.append(';');
-            sb.append(String.valueOf(story.getActTime()).replace(".",","));
+            sb.append(String.valueOf(story.getActTime()));
             sb.append(';');
             sb.append(String.valueOf(story.isFromPreviousIteration()));
             sb.append('\n');
